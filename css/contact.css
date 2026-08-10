@@ -1,0 +1,274 @@
+/* Color Variables */
+:root {
+  --bg-dark: #121212;
+  --bg-light: #FAFAFA;
+  --gold: #C5A46D;
+  --text-dark: #222222;
+  --text-muted: #666666;
+  --border-color: #E8E5E0;
+}
+
+.section-padding { padding: 80px 0; }
+.text-center { text-align: center; }
+.gold-text { color: var(--gold); }
+
+/* ==========================================================================
+   1. İLETİŞİM HERO SECTION (about-hero ile %100 Birebir Aynı)
+   ========================================================================== */
+.contact-hero {
+  padding-top: 180px;
+  padding-bottom: 90px;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.6) 45%, rgba(0, 0, 0, 0) 80%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%),
+    url('../img/slider/contact-hero.jpg') center/cover no-repeat;
+    
+  color: #ffffff;
+}
+
+/* Okun doğru hizalanması için gerekli kapsayıcı kuralı */
+.contact-hero .container {
+  width: 100%;
+  position: relative;
+}
+
+.contact-hero .hero-content-left {
+  text-align: left;
+  max-width: 650px;
+}
+
+.contact-hero .sub-title {
+  letter-spacing: 3px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.contact-hero h1 {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.contact-hero p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 500px;
+  margin: 0 0 30px 0;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.contact-hero .scroll-down {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 32px;
+  display: inline-block;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-hero .scroll-down:hover {
+  opacity: 1;
+  transform: translate(-50%, 5px);
+}
+
+/* ==========================================================================
+   2. İLETİŞİM BİLGİLERİ & HARİTA SECTION
+   ========================================================================== */
+.contact-info-section { background-color: #FFFFFF; }
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.contact-section-title {
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.contact-section-title span { color: var(--text-dark); }
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.info-icon {
+  font-size: 28px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.info-text a, .info-text p {
+  font-size: 16px;
+  color: var(--text-dark);
+  text-decoration: none;
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.info-text a:hover {
+  color: var(--gold);
+}
+/* Tıklanabilir Adres Link Stili */
+.address-link {
+  color: inherit;               /* İçinde bulunduğu metin rengini korur */
+  text-decoration: none;        /* Alt çizgiyi kaldırır */
+  transition: color 0.3s ease;  /* Yumuşak renk geçişi */
+}
+
+.address-link:hover {
+  color: var(--gold, #c4a984);  /* Üzerine gelince altın/bej tonuna döner */
+}
+
+/* Harita Kutusunun Stili */
+.contact-map-box {
+  width: 100%;
+  height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   3. SOSYAL MEDYA SECTION
+   ========================================================================== */
+.social-section {
+  background-color: #FAFAFA;
+  border-top: 1px solid var(--border-color);
+}
+
+.social-title {
+  font-size: 32px;
+  letter-spacing: 2px;
+  color: var(--text-dark);
+  font-weight: 300;
+  margin-bottom: 45px;
+}
+
+.social-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-item i {
+  font-size: 32px;
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+}
+
+.social-item span {
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+.social-item:hover {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.social-item:hover i {
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DÜZENLEMELER
+   ========================================================================== */
+@media (max-width: 991px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-map-box { height: 320px; }
+  .social-grid { gap: 30px; }
+}
+
+@media (max-width: 575px) {
+  .contact-hero h1 { font-size: 32px; }
+  .contact-section-title { font-size: 28px; }
+  .social-title { font-size: 24px; }
+  .social-grid { flex-direction: column; gap: 20px; }
+}
+
+/* ==========================================================================
+   SOSYAL MEDYA ALANI - HOVER SARSINTI & KAYMA ENGELLEYİCİ
+   ========================================================================== */
+
+/* 1. Sosyal Medya Bağlantı Elemanlarının Boyutlarını Sabitleme */
+.social-links a,
+.social-item,
+.social-link,
+.bizi-takip-edin-box a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* 2. İkon ve Yazı İç Korumaları */
+.social-links a i,
+.social-links a span,
+.social-item i,
+.social-item span {
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  transition: color 0.3s ease !important;
+}
+
+/* 3. Hover Anında Boyut veya Kalınlık Değişimini Tamamen Kilitleme */
+.social-links a:hover,
+.social-item:hover,
+.social-link:hover,
+.bizi-takip-edin-box a:hover {
+  transform: none !important;       /* Büyüme efektini durdurur */
+  font-weight: normal !important;   /* Metnin kalınlaşarak kutuyu genişletmesini engeller */
+  line-height: inherit !important;
+}
