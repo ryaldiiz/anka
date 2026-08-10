@@ -651,5 +651,33 @@
     <script src="js/before-after.js"></script>
     <script src="js/vegas.slider.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function setupMobileAccordion() {
+      if (window.innerWidth <= 991) {
+        const cols = document.querySelectorAll('.diagonal-col');
+        if (!cols.length) return;
+
+        // Varsayılan ilk kartı açık yap
+        cols[0].classList.add('active-mobile');
+
+        cols.forEach(col => {
+          col.addEventListener('click', function (e) {
+            if (window.innerWidth <= 991) {
+              // Buton bağlantısına tıklandıysa kartı kapatma
+              if (e.target.closest('a')) return;
+
+              cols.forEach(c => c.classList.remove('active-mobile'));
+              this.classList.add('active-mobile');
+            }
+          });
+        });
+      }
+    }
+
+    setupMobileAccordion();
+    window.addEventListener('resize', setupMobileAccordion);
+  });
+</script>
 </body>
 </html>

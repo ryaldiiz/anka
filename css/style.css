@@ -3921,118 +3921,136 @@ body.dark .lang-wrap ul a:hover{
     background-color: #b19777;
 }
 
-/* Mobil Uyum */
-@media(max-width:991px){
-    .diagonal-wrapper {
-        flex-direction: column;
-    }
-    .diagonal-col {
-        clip-path: none !important;
-        min-height: 33.33vh;
-        width: 100% !important;
-        margin-left: 0 !important;
-    }
-    .col-content {
-        left: 30px;
-        bottom: 35px;
-        width: auto;
-    }
-    .col-title {
-        font-size: 28px;
-    }
-    .col-num {
-        font-size: 40px;
-    }
-}
+/* ==========================================================
+   MOBİL ACCORDION (GARANTİ & SAF CSS)
+   ========================================================== */
+@media screen and (max-width: 991px) {
 
-
-/* ==========================================================================
-   MOBİL MÜKEMMELLEŞTİRME (HERO + NAVBAR REVİZE)
-   ========================================================================== */
-
-@media (max-width: 991px) {
-
-    /* --- 1. HERO SECTION MOBİL DÜZENİ --- */
     .diagonal-hero {
-        height: auto !important; /* vh kısıtlaması kaldırıldı */
-        min-height: 100vh;
-        padding-top: 90px; /* Navbar altına girmemesi için dikey boşluk */
+        height: auto !important;
+        min-height: calc(100vh - 80px) !important;
+        background: #0d0d0d !important;
+        padding-top: 80px !important;
+        padding-bottom: 30px !important;
     }
 
     .diagonal-wrapper {
+        display: flex !important;
         flex-direction: column !important;
         height: auto !important;
+        gap: 10px !important;
+        padding: 0 15px !important;
     }
 
     .diagonal-col {
         clip-path: none !important;
         width: 100% !important;
-        margin-left: 0 !important;
-        height: 260px !important; /* Mobilde her karta sabit, ideal yükseklik */
+        margin: 0 !important;
+        height: 70px !important; /* Kapalı hal yüksekliği */
+        border: 1px solid rgba(177, 151, 119, 0.3) !important;
+        border-radius: 4px !important;
         position: relative !important;
+        overflow: hidden !important;
+        transition: height 0.45s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        cursor: pointer !important;
+    }
+
+    /* Tıklanan / Aktif Kart Açılır */
+    .diagonal-col.active-mobile {
+        height: 300px !important; /* Açık hal yüksekliği */
+        border-color: #b19777 !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+    }
+
+    .col-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(180deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.4) 50%, rgba(13,13,13,0.95) 100%) !important;
     }
 
     .col-content {
-        left: 25px !important;
-        bottom: 25px !important;
-        width: calc(100% - 50px) !important;
+        position: absolute !important;
+        inset: 0 !important;
+        padding: 18px 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        left: 0 !important;
+        bottom: 0 !important;
         transform: none !important;
+        z-index: 10 !important;
     }
 
-    /* Mobilde Başlık ve Numaraların Kesilmesini Önleme */
     .col-num {
-        font-size: 32px !important;
-        margin-bottom: 4px !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-size: 18px !important;
+        color: #b19777 !important;
+        -webkit-text-stroke: 0 !important;
+        margin-bottom: 0 !important;
     }
 
     .col-tag {
+        font-family: 'Oswald', sans-serif !important;
         font-size: 10px !important;
         letter-spacing: 2px !important;
-        margin-bottom: 4px !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+        margin: 0 !important;
     }
 
     .col-title {
-        font-size: 26px !important;
-        margin-bottom: 6px !important;
-        line-height: 1.1 !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-size: 22px !important;
+        letter-spacing: 2px !important;
+        color: #ffffff !important;
+        margin: 0 !important;
     }
 
-    /* Mobilde Açıklama Metnini Gösterip Alanı Dolgunlaştırma */
+    .diagonal-col.active-mobile .col-title {
+        color: #b19777 !important;
+    }
+
+    /* Kapalıyken Gizle, Açılınca Göster */
+    .col-desc,
+    .col-btn {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(10px) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .diagonal-col.active-mobile .col-desc,
+    .diagonal-col.active-mobile .col-btn {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
+
     .col-desc {
-        display: none !important; /* Mobilde dikey alanı daraltmamak için gizlendi */
+        display: block !important;
+        font-size: 12.5px !important;
+        line-height: 1.5 !important;
+        color: #b0b0b0 !important;
+        margin: 10px 0 !important;
     }
 
     .col-btn {
-        margin-top: 10px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        color: #ffffff !important;
+        font-family: 'Oswald', sans-serif !important;
         font-size: 11px !important;
+        letter-spacing: 2px !important;
         padding-bottom: 4px !important;
-    }
-    @media (max-width: 991px) {
-    /* 1. İlk Kartın Üstten Kesilmesini Önleme */
-    .diagonal-col:first-child .col-content {
-        top: 35px !important; /* Üstten içeriye doğru iterek 01 yazısının tamamen görünmesini sağlar */
-        bottom: auto !important;
-    }
-
-    /* 2. Diğer Kartların İçerik Hizalaması */
-    .diagonal-col .col-content {
-        left: 20px !important;
-        bottom: 20px !important;
-        width: calc(100% - 40px) !important;
-    }
-
-    /* 3. Numaraların Ölçüsünü Mobilde Kibarlaştırma */
-    .col-num {
-        font-size: 26px !important; /* 32px'den 26px'e çekildi, yazıların üstüne binmez */
-        margin-bottom: 2px !important;
-        opacity: 0.8 !important;
-    }
-
-    .col-title {
-        font-size: 24px !important; /* 26px'den 24px'e kibarlaştırıldı */
-        margin-bottom: 4px !important;
+        border-bottom: 1px solid #b19777 !important;
+        width: fit-content !important;
     }
 }
+
+
+
+
 
     /* --- 2. NAVBAR MOBİL DÜZENİ --- */
     .navbar {
@@ -4141,4 +4159,3 @@ body.dark .lang-wrap ul a:hover{
     .mobile-nav-overlay ul li a:hover {
         color: #b19777;
     }
-}

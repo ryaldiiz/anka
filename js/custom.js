@@ -369,3 +369,24 @@ $(document).ready(function () {
         $('body').removeClass('no-scroll');
     });
 });
+
+/* ==========================================================
+   MOBİL ACCORDION HERO INTERACTION
+========================================================== */
+$(document).ready(function () {
+    // Mobilde varsayılan olarak ilk kart açık başlasın
+    if ($(window).width() <= 991) {
+        $('.diagonal-col').first().addClass('active-mobile');
+    }
+
+    // Kartlara Tıklama Etkileşimi
+    $('.diagonal-col').on('click', function (e) {
+        if ($(window).width() <= 991) {
+            // Eğer doğrudan butona tıklanmadıysa accordion'u aç/kapa yap
+            if (!$(e.target).is('a') && !$(e.target).parents('a').length) {
+                $('.diagonal-col').not(this).removeClass('active-mobile');
+                $(this).toggleClass('active-mobile');
+            }
+        }
+    });
+});
