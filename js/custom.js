@@ -319,74 +319,62 @@ if (form.length) {
     });
 }
 
-/* =========================================================
-   DIAGONAL HERO MOBIL ETKİLEŞİM YÖNETİMİ
-   ========================================================= */
-$(document).ready(function () {
-    const cols = $('.diagonal-col');
-    if (cols.length && window.innerWidth < 992) {
-        cols.on('click', function (e) {
-            if (!$(this).hasClass('active')) {
-                e.preventDefault();
-                cols.removeClass('active');
-                $(this).addClass('active');
-            }
-        });
-    }
+
+/* =========================
+    MOBİL MENÜ TOGGLE & CLOSE
+========================= */
+const hamburger = $(".hamburger");
+const closeBtn = $(".mobile-close-btn");
+const mobileOverlay = $(".mobile-nav-overlay");
+const mobileLinks = $(".mobile-nav-menu a");
+
+// Açma
+hamburger.on("click", function () {
+    mobileOverlay.addClass("active");
+    $("body").addClass("no-scroll");
+});
+
+// Kapatma (X Butonu)
+closeBtn.on("click", function () {
+    mobileOverlay.removeClass("active");
+    $("body").removeClass("no-scroll");
+});
+
+// Linke tıklayınca kapatma
+mobileLinks.on("click", function () {
+    mobileOverlay.removeClass("active");
+    $("body").removeClass("no-scroll");
 });
 
 
+function updateNavbarState() {
+    const scrolled = wind.scrollTop() > 100;
 
-/* =========================================================
-   MOBİL HAMBURGER MENÜ ETKİLEŞİMİ
-   ========================================================= */
-$(document).ready(function () {
-    // Mobil Menü Perdesini Otomatik Oluşturma
-    if (!$('.mobile-nav-overlay').length) {
-        $('body').append(`
-            <div class="mobile-nav-overlay">
-                <ul>
-                    <li><a href="about.html">Hakkımızda</a></li>
-                    <li><a href="projects.html">Projeler</a></li>
-                    <li><a href="team.html">Ekibimiz</a></li>
-                    <li><a href="contact.html">İletişim</a></li>
-                </ul>
-            </div>
-        `);
+    if (scrolled) {
+        navbar.addClass("nav-scroll");
+    } else {
+        navbar.removeClass("nav-scroll");
     }
 
-    // Hamburger Tıklama Olayı
-    $('.hamburger').on('click', function () {
-        $(this).toggleClass('active');
-        $('.mobile-nav-overlay').toggleClass('active');
-        $('body').toggleClass('no-scroll');
-    });
-
-    // Menü Linklerine Tıklanınca Kapatma
-    $('.mobile-nav-overlay a').on('click', function () {
-        $('.hamburger').removeClass('active');
-        $('.mobile-nav-overlay').removeClass('active');
-        $('body').removeClass('no-scroll');
-    });
-});
-
-/* ==========================================================
-   MOBİL ACCORDION HERO INTERACTION
-========================================================== */
-$(document).ready(function () {
-    // Mobilde varsayılan olarak ilk kart açık başlasın
+    // Mobil Ekran Logoları (991px ve altı)
     if ($(window).width() <= 991) {
-        $('.diagonal-col').first().addClass('active-mobile');
+        if (scrolled) {
+            $(".logo-img").attr("src", "img/logo-dark.png"); // Aşağı kaydırınca siyah logo
+        } else {
+            $(".logo-img").attr("src", "img/logo.png");      // En üstteyken orijinal beyaz logo
+        }
+        return;
     }
 
-    // Kartlara Tıklama Etkileşimi
-    $('.diagonal-col').on('click', function (e) {
-        if ($(window).width() <= 991) {
-            // Eğer doğrudan butona tıklanmadıysa accordion'u aç/kapa yap
-            if (!$(e.target).is('a') && !$(e.target).parents('a').length) {
-                $('.diagonal-col').not(this).removeClass('active-mobile');
-                $(this).toggleClass('active-mobile');
-            }
+    // Masaüstü Ekran Logoları
+    if (isDarkMode) {
+        $(".logo-img").attr("src", "img/logo.png");
+    } else {
+        if (scrolled) {
+            $(".logo-img").attr("src", "img/logo-dark.png");
+        } else {
+            $(".logo-img").attr("src", "img/logo.png");
         }
-    });
-});
+    }
+}
+
